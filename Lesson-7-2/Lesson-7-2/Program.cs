@@ -99,31 +99,7 @@ namespace Lesson_7_2
 
         private static bool CheckWin(char sym)
         {
-            bool c = false;
-
-            for (int j = 0; j < field.GetLength(0); j++)
-            {
-                int k = 1;
-                for (int i = 0; i < field.GetLength(1); i++)
-                {
-                    if (field[j, i] == sym)
-                    {
-
-                        c = k == 3 ? true : false;
-                        k++;
-
-                    }
-                    else
-                    {
-                        return c;
-                    }
-
-                }
-                if (c == true)
-                return c;
-                break;
-                
-            }
+            return Gorizontal(sym);
            
 
             //if (field[0, 0] == sym && field[0, 1] == sym && field[0, 2] == sym)
@@ -162,6 +138,35 @@ namespace Lesson_7_2
             }
 
             return false;
+        }
+        public static bool Gorizontal(char a)
+        {
+            bool c = false;
+
+            for (int j = 0; j < field.GetLength(0); j++)
+            {
+                int k = 1;
+                for (int i = 0; i < field.GetLength(1); i++)
+                {
+                    if (field[j, i] == a)
+                    {
+
+                        c = k == 3 ? true : false;
+                        k++;
+
+                    }
+                    else
+                    {
+                        return c;
+                    }
+
+                }
+                if (c == true)
+                    
+                break;
+
+            }
+            return c;
         }
             static void Main(string[] args)
     {
