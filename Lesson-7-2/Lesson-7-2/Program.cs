@@ -4,6 +4,7 @@ namespace Lesson_7_2
 {
     class Cross
     {
+        //Конечны вариант
         static int SIZE_X = 3;
         static int SIZE_Y = 3;
 
