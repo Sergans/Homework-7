@@ -99,18 +99,45 @@ namespace Lesson_7_2
 
         private static bool CheckWin(char sym)
         {
-            if (field[0, 0] == sym && field[0, 1] == sym && field[0, 2] == sym)
+            bool c = false;
+
+            for (int j = 0; j < field.GetLength(0); j++)
             {
-                return true;
+                int k = 1;
+                for (int i = 0; i < field.GetLength(1); i++)
+                {
+                    if (field[j, i] == sym)
+                    {
+
+                        c = k == 3 ? true : false;
+                        k++;
+
+                    }
+                    else
+                    {
+                        return c;
+                    }
+
+                }
+                if (c == true)
+                return c;
+                break;
+                
             }
-            if (field[1, 0] == sym && field[1, 1] == sym && field[1, 2] == sym)
-            {
-                return true;
-            }
-            if (field[2, 0] == sym && field[2, 1] == sym && field[2, 2] == sym)
-            {
-                return true;
-            }
+           
+
+            //if (field[0, 0] == sym && field[0, 1] == sym && field[0, 2] == sym)
+            //{
+            //    return true;
+            //}
+            //if (field[1, 0] == sym && field[1, 1] == sym && field[1, 2] == sym)
+            //{
+            //    return true;
+            //}
+            //if (field[2, 0] == sym && field[2, 1] == sym && field[2, 2] == sym)
+            //{
+            //    return true;
+            //}
 
             if (field[0, 0] == sym && field[1, 0] == sym && field[2, 0] == sym)
             {
