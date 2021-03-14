@@ -100,7 +100,9 @@ namespace Lesson_7_2
         private static bool CheckWin(char sym)
         {
             return Gorizontal(sym);
-           
+            return Vertical(sym);
+            return Diag01(sym);
+            return Diag10(sym);
 
             //if (field[0, 0] == sym && field[0, 1] == sym && field[0, 2] == sym)
             //{
@@ -115,29 +117,29 @@ namespace Lesson_7_2
             //    return true;
             //}
 
-            if (field[0, 0] == sym && field[1, 0] == sym && field[2, 0] == sym)
-            {
-                return true;
-            }
-            if (field[0, 1] == sym && field[1, 1] == sym && field[2, 1] == sym)
-            {
-                return true;
-            }
-            if (field[0, 2] == sym && field[1, 2] == sym && field[2, 2] == sym)
-            {
-                return true;
-            }
+            //if (field[0, 0] == sym && field[1, 0] == sym && field[2, 0] == sym)
+            //{
+            //    return true;
+            //}
+            //if (field[0, 1] == sym && field[1, 1] == sym && field[2, 1] == sym)
+            //{
+            //    return true;
+            //}
+            //if (field[0, 2] == sym && field[1, 2] == sym && field[2, 2] == sym)
+            //{
+            //    return true;
+            //}
 
-            if (field[0, 0] == sym && field[1, 1] == sym && field[2, 2] == sym)
-            {
-                return true;
-            }
-            if (field[2, 0] == sym && field[1, 1] == sym && field[0, 2] == sym)
-            {
-                return true;
-            }
+            //if (field[0, 0] == sym && field[1, 1] == sym && field[2, 2] == sym)
+            //{
+            //    return true;
+            //}
+            //if (field[2, 0] == sym && field[1, 1] == sym && field[0, 2] == sym)
+            //{
+            //    return true;
+            //}
 
-            return false;
+           // return false;
         }
         public static bool Gorizontal(char a)
         {
@@ -168,7 +170,86 @@ namespace Lesson_7_2
             }
             return c;
         }
-            static void Main(string[] args)
+        public static bool Vertical(char a)
+        {
+            bool c = false;
+
+            for (int j = 0; j < field.GetLength(0); j++)
+            {
+                int k = 1;
+                for (int i = 0; i < field.GetLength(1); i++)
+                {
+                    if (field[i, j] == a)
+                    {
+
+                        c = k == 3 ? true : false;
+                        k++;
+
+                    }
+                    else
+                    {
+                        return c;
+                    }
+
+                }
+                if (c == true)
+
+                    break;
+
+            }
+            return c;
+        }
+        public static bool Diag01(char a)
+        {
+            bool c = true;
+
+
+            int k = 1;
+            for (int i = 0, j = 0; i < field.GetLength(0) && j < field.GetLength(1); i++, j++)
+            {
+                if (field[j, i] == 'x')
+                {
+
+                    c = k == 3 ? true : false;
+                    k++;
+
+                }
+                else
+                {
+                    c = false;
+                }
+                if (c == true)
+                    break;
+            }
+
+
+            return c;
+        }
+        public static bool Diag10(char a)
+        {
+            bool c = true;
+
+
+            int k = 1;
+            for (int i = 0, j = field.GetLength(1) - 1; i < 0 && j > 0; i++, j--)
+            {
+                if (field[i, j] == 'x')
+                {
+
+                    c = k == 3 ? true : false;
+                    k++;
+
+                }
+                else
+                {
+                    c = false;
+                }
+                if (c == true)
+                    break;
+            }
+            return c;
+        }
+        static void Main(string[] args)
     {
             InitField();
             PrintField();
